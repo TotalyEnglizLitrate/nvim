@@ -11,13 +11,16 @@ local plugins = {
   { "pocco81/autosave.nvim", lazy = false }, --  AutoSave
   { "lambdalisue/vim-suda", lazy = false }, -- sudo
   {
-    "stevearc/overseer.nvim",
+    "github/copilot.vim",
+    lazy = false,
     config = function()
-      require("overseer").setup {
-        templates = { "builtin", "user.run_script" },
-      }
+      vim.keymap.set("i", "<C-m>", "copilot#Accept()", {
+        expr = true,
+        replace_keycodes = false,
+      })
+      vim.g.copilot_no_tab_map = true
     end,
-  },
+  }, -- copilot
 }
 
 return plugins
